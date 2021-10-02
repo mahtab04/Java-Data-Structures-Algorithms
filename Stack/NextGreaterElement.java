@@ -1,3 +1,5 @@
+//https://leetcode.com/problems/next-greater-element-ii/
+import java.util.*;
 public class NextGreaterElement {
 
     public static int[] nextGreaterElement(int arr[]) {
@@ -15,17 +17,22 @@ public class NextGreaterElement {
         return result;
     }
 
-    public static int [] nextGreaterElement2(int[] arr) {
-        int[] result = new int[arr.length];
+    public static int [] nextGreaterElement2(int[] nums) {
         Stack<Integer> stack = new Stack<>();
-        for (int i = arr.length - 1; i >= 0; i--) {
-            while (!stack.isEmpty() && arr[i] >= stack.peek()) {
+        for (int i = nums.length - 1; i >= 0; i--) {
+            stack.push(nums[i]);
+        }
+
+        int greater[] = new int[nums.length];
+        for (int i = nums.length - 1; i >= 0; i--) {
+            while (!stack.isEmpty() && stack.peek() <= nums[i]) {
                 stack.pop();
             }
-            result[i] = stack.isEmpty() ? -1 : stack.peek();
-            stack.push(arr[i]);
+            greater[i] = stack.empty() ? -1 : stack.peek();
+            stack.push(nums[i]);
         }
-        return result;
+
+        return greater;
     }
 
     
