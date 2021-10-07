@@ -31,6 +31,45 @@ public class DuplicateInArr {
         return result;
     }
 
+    // using HashSet
+    public static int findDuplicateUsingHashSet(int[] arr) {
+        // Your code goes here
+        Set<Integer> set = new HashSet<>();
+        for (int i = 0; i < arr.length; i++) {
+            if (!set.add(arr[i]))
+                return arr[i];
+        }
+        return -1;
+    }
+
+    // using HashMap
+    public static int findDuplicateUsingHashMap(int[] arr) {
+        // Your code goes here
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < arr.length; i++) {
+            if (map.containsKey(arr[i]))
+                return arr[i];
+            else
+                map.put(arr[i], 1);
+        }
+        return -1;
+    }
+
+    // using Bit Manipulation
+    public static int findDuplicateUsingBitManipulation(int[] arr) {
+        // Your code goes here
+        int n = arr.length;
+        int xor = 0;
+        for (int i = 0; i < n; i++) {
+            xor ^= arr[i];
+        }
+        int xor1 = 0;
+        for (int i = 0; i < n; i++) {
+            xor1 ^= i;
+        }
+        return xor ^ xor1;
+    }
+
     // This function takes input from the user and store in array;
     public static int[] takeInput() {
         System.out.println("Enter the size of array: ");
