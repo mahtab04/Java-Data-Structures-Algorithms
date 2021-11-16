@@ -17,9 +17,10 @@ public class NumberInArray {
 
 	// Efficient solution
 	public static boolean isNumberInArrayEfficient(int[] arr, int number, int startIndex) {
-		if (arr.length == 0) {
+		if (startIndex == arr.length - 1) {
 			return false;
 		}
+		
 		if (arr[startIndex] == number) {
 			return true;
 		}
