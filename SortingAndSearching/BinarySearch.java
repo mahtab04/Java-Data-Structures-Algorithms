@@ -2,6 +2,8 @@ package searching;
 import java.util.*;
 public class BinarySearch {
 
+
+	//binary search for ascending order
 	public static int binarySearch(int arr[], int x) {
 		int start = 0, end = arr.length - 1;
 		while (start <= end) {
@@ -15,6 +17,24 @@ public class BinarySearch {
 		}
 		return -1;
 	}
+
+//binary search for  descending order
+	public static int binarySearchDescending(int arr[], int x) {
+		int start = 0, end = arr.length - 1;
+		while (start <= end) {
+			int mid = start + (end - start) / 2;
+			if (arr[mid] == x)
+				return mid;
+			else if(arr[mid]>x)
+				start = mid + 1;
+			else
+				end = mid - 1;
+		}
+		return -1;
+	}
+
+
+
 
 	// This function takes input from the user and store in array;
 	public static int[] takeInput() {
