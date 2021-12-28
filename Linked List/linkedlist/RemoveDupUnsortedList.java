@@ -1,25 +1,31 @@
 package linkedlist;
 
-import java.util.Scanner;
+import java.util.*;
 
 public class RemoveDupUnsortedList {
 
     // This function removes duplicates from a unsorted linked list 
-    public static Node<Integer> removeDupUnsortedList(Node<Integer> head) {
+   public static Node<Integer> removeDupUnsortedList2(Node<Integer> head) {
         if (head == null) {
             return null;
         }
-        Node<Integer> current = head, temp = head;
+        HashSet<Integer> set = new HashSet<>();
+
+        Node<Integer> current = head, prev = null;
         while (current != null) {
-            while (current != null && current.data == temp.data) {
-                current = current.next;
+            if (set.contains(current.data)) {
+                prev.next = current.next;
+                current = null;
+            } else {
+                set.add(current.data);
+                prev = current;
             }
-            temp.next = current;
-            temp = current;
+            current = prev.next;
 
         }
         return head;
     }
+
 
     // print the list
     public static void printList(Node<Integer> head) {
